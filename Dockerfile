@@ -7,7 +7,6 @@ ENV VAULT_AUTH_METHOD="--vault-password-file=/secrets/secret.key" \
   KUBECONFIG=/home/automation-user/.kube/config \
   PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
-# git gcc zlib-devel bzip2-devel readline-devel sqlite-devel openssl-devel
 RUN yum -y update \
   && yum install -y epel-release \
   && yum install -y \
@@ -45,8 +44,6 @@ RUN source /home/automation-user/.bashrc \
   && pyenv virtualenv 3.10.4 py3.10.4 \
   && pyenv activate py3.10.4 \
   && pyenv local py3.10.4 \
-  # && pyenv exec python -m pip install --upgrade pip \
-  # && pyenv exec python -m pip install --force setuptools setuptools-git \
   && pyenv exec python -m pip install --force -r /tmp/src/prereq.requirements.txt \
   && pyenv exec python -m pip install -r /tmp/src/requirements.txt
 
